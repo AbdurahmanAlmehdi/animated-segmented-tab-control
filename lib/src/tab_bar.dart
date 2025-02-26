@@ -327,7 +327,10 @@ class _SegmentedTabControlState extends State<_SegmentedTabControl>
     final x =
         (position - halfMaxWidth + currentTabHalfWidth) / (halfMaxWidth - currentTabHalfWidth);
 
-    return Alignment(x, 0);
+    // return Alignment(x, 0);
+    final isRTL = Directionality.of(context) == TextDirection.rtl;
+    return Alignment(isRTL ? -x : x, 0);
+    
   }
 
   TickerFuture _animateIndicatorTo(Alignment target) {
